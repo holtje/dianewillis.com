@@ -32,4 +32,8 @@ RSpec.configure do |config|
   # automatically. This will be the default behavior in future versions of
   # rspec-rails.
   config.infer_base_class_for_anonymous_controllers = false
+
+  # Allow use of create() and build() directly without prefixing it with `FactoryGirl.`
+  config.include Factory::Syntax::Methods
+
 end
