@@ -15,7 +15,6 @@ end
 
 group :test, :development do
   gem "rspec-rails"
-  gem 'rspec-instafail'
   gem 'rb-fsevent'
   gem 'growl'
   gem 'pry'

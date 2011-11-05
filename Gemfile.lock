@@ -150,7 +150,6 @@ GEM
     rspec-core (2.7.1)
     rspec-expectations (2.7.0)
       diff-lcs (~> 1.1.2)
-    rspec-instafail (0.1.9)
     rspec-mocks (2.7.0)
     rspec-rails (2.7.0)
       actionpack (~> 3.0)
@@ -212,7 +211,6 @@ DEPENDENCIES
   rails (= 3.1.1)
   rb-fsevent
   redcarpet
-  rspec-instafail
   rspec-rails
   sass-rails (~> 3.1.4)
   uglifier (>= 1.0.3)
