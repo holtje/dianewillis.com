@@ -58,5 +58,8 @@ module Dianewillis
       g.fixture_replacement :factory_girl, :dir => 'spec/factories'
       g.template_engine :haml
     end
+
+    # Turn off annoying timestamps in migrations
+    config.active_record.timestamped_migrations = false
   end
 end
