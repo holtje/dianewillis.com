@@ -22,8 +22,10 @@ group :test, :development do
   gem 'database_cleaner'
   gem "factory_girl_rails"
   gem "capybara"
+  gem "spork", "~> 0.9.0.rc9"
   gem "guard-bundler"
   gem "guard-rspec"
+  gem "guard-spork"
   gem "guard-migrate"
 end
 
