@@ -10,4 +10,8 @@ class Page < ActiveRecord::Base
 
   validates :body,
     :presence => true
+
+  def rendered
+    read_attribute(:rendered).html_safe
+  end
 end

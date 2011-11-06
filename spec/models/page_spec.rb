@@ -38,5 +38,8 @@ describe Page do
       page.rendered.should_not == old_rendered
       page.rendered.should include "new text"
     end
+    it "should be html_safe" do
+      create(:page).rendered.should be_html_safe
+    end
   end
 end
