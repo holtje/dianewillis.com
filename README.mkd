@@ -1,0 +1,6 @@
+# Diane Willis' Home Page
+
+[![Build Status](https://secure.travis-ci.org/docwhat/dianewillis.png)](http://travis-ci.org/docwhat/dianewillis)
+
+I've written this rails app for my mother so that she can easily edit her web page.
+
