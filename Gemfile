@@ -5,6 +5,7 @@ gem 'pg'
 gem 'jquery-rails'
 gem 'haml-rails'
 gem 'redcarpet'
+gem 'exception_notification'
 
 group :assets do
   gem 'sass-rails',   '~> 3.1.4'
