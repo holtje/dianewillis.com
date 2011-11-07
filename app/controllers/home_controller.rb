@@ -1,10 +1,10 @@
 class HomeController < ApplicationController
-  caches_action :view
-
   def view
     @page = Page.find_by_name "home"
-    respond_to do |format|
-      format.html
+    if stale?(:etag => @page, :last_modified => @page.updated_at.utc)
+      respond_to do |format|
+        format.html
+      end
     end
   end
 end
