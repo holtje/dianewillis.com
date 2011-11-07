@@ -1,3 +1,4 @@
-%header.title
-  %h1= @page.title
-%section.body= @page.body
+- content_for :title do
+  = @page.title
+
+= @page.body
