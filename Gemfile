@@ -6,6 +6,7 @@ gem 'jquery-rails'
 gem 'haml-rails'
 gem 'redcarpet'
 gem 'exception_notification'
+gem 'activeadmin'
 
 group :assets do
   gem 'sass-rails',   '~> 3.1.4'
