@@ -6,8 +6,9 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    - flash.each do |name, msg|
-      %div{:id => "flash#{name}"}
-        %p{:style => "float:right;"}= link_to_function '&times;', "$('#flash#{name}').fadeOut('slow')"
-        %p= msg
-    = yield
+    %div#content
+      - flash.each do |name, msg|
+        %div{:id => "flash#{name}"}
+          %p{:style => "float:right;"}= link_to_function '&times;', "$('#flash#{name}').fadeOut('slow')"
+          %p= msg
+      = yield
