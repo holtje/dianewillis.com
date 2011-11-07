@@ -9,7 +9,7 @@ guard 'migrate' do
   watch(%r{^db/migrate/(\d+).+\.rb})
 end
 
-guard 'spork', :cucumber_env => { 'RAILS_ENV' => 'test' }, :rspec_env => { 'RAILS_ENV' => 'test' } do
+guard 'spork', :cucumber_env => { 'RAILS_ENV' => 'test' }, :rspec_env => { 'RAILS_ENV' => 'test' }, :wait => 30  do
   watch('config/application.rb')
   watch('config/environment.rb')
   watch(%r{^config/environments/.+\.rb$})
@@ -18,6 +18,7 @@ guard 'spork', :cucumber_env => { 'RAILS_ENV' => 'test' }, :rspec_env => { 'RAIL
   watch('Gemfile.lock')
   watch('spec/spec_helper.rb')
   watch('test/test_helper.rb')
+  watch('lib/**/*.rb')
 end
 
 guard 'rspec', :version => 2, :cli => "--colour --drb --format documentation" do

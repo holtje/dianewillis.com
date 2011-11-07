@@ -4,7 +4,7 @@ gem 'rails', '3.1.1'
 gem 'pg'
 gem 'jquery-rails'
 gem 'haml-rails'
-gem 'redcarpet'
+gem 'redcarpet', '~> 2.0.0b5'
 gem 'exception_notification'
 gem 'activeadmin'
 # sass-rails usually goes in assets, but
