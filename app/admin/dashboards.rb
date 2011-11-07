@@ -10,6 +10,7 @@ ActiveAdmin::Dashboards.build do
   section "Information tracking", priority: 10 do
     ul do
       li link_to "Google Analytics", "https://www.google.com/analytics/reporting/?id=40326979"
+      li link_to "Source Code", "http://github.com/docwhat/dianewillis"
     end
   end
 
