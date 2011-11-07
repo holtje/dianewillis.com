@@ -9,7 +9,7 @@ ActiveAdmin::Dashboards.build do
 
   section "Information tracking", priority: 10 do
     ul do
-      li "Link to google analytics"
+      li link_to "Google Analytics", "https://www.google.com/analytics/reporting/?id=40326979"
       li "Link to getsatisfaction"
     end
   end
