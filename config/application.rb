@@ -61,5 +61,8 @@ module Dianewillis
 
     # Turn off annoying timestamps in migrations
     config.active_record.timestamped_migrations = false
+
+    # Don't access DB when precompiling caches on Heroku.
+    config.assets.initialize_on_precompile = false
   end
 end
