@@ -7,9 +7,11 @@ gem 'haml-rails'
 gem 'redcarpet'
 gem 'exception_notification'
 gem 'activeadmin'
+# sass-rails usually goes in assets, but
+# active admin gets upset in that case. :-(
+gem 'sass-rails',   '~> 3.1.4'
 
 group :assets do
-  gem 'sass-rails',   '~> 3.1.4'
   gem 'coffee-rails', '~> 3.1.1'
   gem 'compass', '~> 0.12.alpha'
   gem 'uglifier', '>= 1.0.3'
