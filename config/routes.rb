@@ -1,5 +1,5 @@
 Dianewillis::Application.routes.draw do
-  match '/' => 'home#view'
+  root :to => 'home#view'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
