@@ -7,6 +7,6 @@ namespace :heroku do
   desc "Deploy the git repository to heroku"
   task :deploy do
     system "git push git@heroku.com:dianewillis.git master"
-    system "heroku rake run db:migrate"
+    system "heroku run rake db:migrate"
   end
 end
