@@ -1,5 +1,21 @@
 Dianewillis::Application.routes.draw do
-  root :to => 'home#view'
+  root :to => 'page#view', :key => 'root'
+
+  class PageKeyConstraint
+    def matches?(request)
+      if Rails.env.test? and request.params[:key].nil?
+        # When running as specs, request.params doesn't work right.
+        request.params[:key] = request.env["PATH_INFO"].sub '/', ''
+      end
+      Page.find_by_key(request.params[:key])
+    end
+  end
+  controller :page do
+    constraints PageKeyConstraint.new do
+      get '/:key',  :to => :view, :as => :page, :key => /.*/
+    end
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

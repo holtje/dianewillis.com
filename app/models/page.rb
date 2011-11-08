@@ -1,17 +1,20 @@
-require 'rendered_model'
-
 class Page < ActiveRecord::Base
-  include RenderedModel
+  validates :title,
+    :length => { :minimum => 0, :maximum => 255 },
+    :presence => true
 
-  validates :name,
-    :length => { :minimum => 1, :maximum => 128, },
+  validates :key,
+    :format => { :with => /^[a-z0-9_-]+$/i },
     :presence => true,
     :uniqueness => true
 
   validates :body,
     :presence => true
 
-  def rendered
-    read_attribute(:rendered).html_safe
+  def body
+    read_attribute(:body).html_safe
+  end
+  def title
+    read_attribute(:title).html_safe
   end
 end

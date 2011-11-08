@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :page do
-    sequence(:name) {|n| "Page ##{n}"}
-    body "This is a _page_."
-    rendered "This is a <i>page</i>."
+    sequence(:title) {|n| "Page ##{n}"}
+    sequence(:key) {|n| "key#{n}"}
+    body "<p>This is a <i>page</i>.</p>"
   end
 end
