@@ -2,23 +2,12 @@
 %html
   %head
     %title
-      = yield :title
+      = strip_tags yield(:title)
     = stylesheet_link_tag    "application"
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
     - if current_user
-      %section#admin
-        = current_user.name
-        = link_to "&times;".html_safe, logout_path
-    %header#title
-      %h1= yield :title
-    %section#body
-      - if flash.any?
-        #flash
-          - flash.each do |name, msg|
-            %div{:class => "#{name}"}
-              = link_to_function '&times;'.html_safe, "$('#flash .#{name}').fadeOut('slow')", :class => "close"
-              %p= msg
+      = render :partial => 'layouts/admin'
+    %section#content
       = yield
-

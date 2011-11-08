@@ -4,9 +4,10 @@ gem 'rails', '3.1.1'
 gem 'pg'
 gem 'jquery-rails'
 gem 'haml-rails'
-gem 'redcarpet'
 gem 'exception_notification'
 gem 'bcrypt-ruby'
+gem 'mercury-rails', git: 'https://github.com/jejacks0n/mercury.git', ref: 'a2b16bcdc9'
+gem 'redcarpet', '~> 2.0.0b5'
 
 group :assets do
   gem 'sass-rails',   '~> 3.1.4'

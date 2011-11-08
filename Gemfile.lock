@@ -1,3 +1,16 @@
+GIT
+  remote: https://github.com/jejacks0n/mercury.git
+  revision: a2b16bcdc96f12a21c04e95e145588595847523b
+  ref: a2b16bcdc9
+  specs:
+    mercury-rails (0.2.3)
+      coffee-script
+      formtastic
+      json
+      paperclip
+      rails (~> 3.1.0)
+      sass-rails
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -43,6 +56,7 @@ GEM
     childprocess (0.2.2)
       ffi (~> 1.0.6)
     chunky_png (1.2.5)
+    cocaine (0.2.0)
     coderay (0.9.8)
     coffee-rails (3.1.1)
       coffee-script (>= 2.2.0)
@@ -68,6 +82,8 @@ GEM
       factory_girl (~> 2.2.0)
       railties (>= 3.0.0)
     ffi (1.0.9)
+    formtastic (2.0.2)
+      rails (~> 3.0)
     fssm (0.2.7)
     growl (1.0.3)
     guard (0.8.8)
@@ -111,6 +127,11 @@ GEM
     mime-types (1.17.2)
     multi_json (1.0.3)
     nokogiri (1.5.0)
+    paperclip (2.4.5)
+      activerecord (>= 2.3.0)
+      activesupport (>= 2.3.2)
+      cocaine (>= 0.0.2)
+      mime-types
     pg (0.11.0)
     polyglot (0.3.3)
     pry (0.9.7.4)
@@ -146,7 +167,7 @@ GEM
     rb-fsevent (0.4.3.1)
     rdoc (3.11)
       json (~> 1.4)
-    redcarpet (1.17.2)
+    redcarpet (2.0.0b5)
     rest-client (1.6.7)
       mime-types (>= 1.16)
     rspec (2.7.0)
@@ -228,11 +249,12 @@ DEPENDENCIES
   haml-rails
   heroku
   jquery-rails
+  mercury-rails!
   pg
   pry
   rails (= 3.1.1)
   rb-fsevent
-  redcarpet
+  redcarpet (~> 2.0.0b5)
   rspec-rails
   sass-rails (~> 3.1.4)
   spork (~> 0.9.0.rc9)

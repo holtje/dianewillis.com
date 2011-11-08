@@ -1,0 +1,15 @@
+- content_for :title do
+  = @page.title
+  
+%header
+  %h1#title.mercury-region{ 'data-type' => "editable" }= yield :title
+
+- if flash.any?
+  #flash
+    - flash.each do |name, msg|
+      %div{:class => "#{name}"}
+        = link_to_function '&times;'.html_safe, "$('#flash .#{name}').fadeOut('slow')", :class => "close"
+        %p= msg
+
+%section#body.mercury-region{ 'data-type' => "editable" }
+  = @page.body

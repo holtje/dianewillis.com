@@ -11,10 +11,17 @@ class Page < ActiveRecord::Base
   validates :body,
     :presence => true
 
+
   def body
     read_attribute(:body).html_safe
   end
+  def body= value
+    write_attribute(:body, Redcarpet::Render::SmartyPants.render(value))
+  end
   def title
     read_attribute(:title).html_safe
+  end
+  def title= value
+    write_attribute(:title, Redcarpet::Render::SmartyPants.render(value))
   end
 end

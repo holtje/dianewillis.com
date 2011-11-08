@@ -12,15 +12,14 @@ body {
   @include blueprint-typography();
 }
 
-#title, #body {
-  max-width: 720px;
-  padding: 0 1em;
-  margin: 1em auto;
-}
-#body {
+#content {
   p {
     text-align: justify;
   }
+
+  max-width: 50em;
+  padding: 0 1em;
+  margin: 1em auto;
 
   blockquote {
     padding: 0.3em;
@@ -37,21 +36,39 @@ body {
   }
 }
 
+$admin-bg-color: #e0f0ff;
+$admin-color: #456;
+$admin-border-color: #567;
+
 #admin {
   position: fixed;
-  left: 0;
+  right: 0;
   top: 0;
-  background: $info-bg-color;
-  color: $info-color;
-  border-width: 0 1px 1px 0;
+  background: $admin-bg-color;
+  color: $admin-color;
+  padding: 0.3em 1.3em 0.3em 0.8em;
+  border-width: 0 0 1px 1px;
   border-style: solid;
-  border-color: $info-border-color;
-  padding: 0.2em;
-  @include border-radius(0 0 0.3em 0);
+  border-color: $admin-border-color;
+  @include border-radius(0 0 0 0.3em);
   @include box-sizing(border-box);
   @include box-shadow(0.2em 0.2em 0 0 transparentize(black, 0.9));
   a {
     text-decoration: none;
+    display: block;
+    &.logout {
+      color: $admin-border-color;
+      float: right;
+      margin-right: -1em;
+      font-size: 110%;
+      font-weight: bold;
+      text-align: center;
+      height: 1em;
+      width: 1em;
+      &:hover {
+        color: lighten($admin-border-color, 20%);
+      }
+    }
   }
 }
 

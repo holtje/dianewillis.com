@@ -1,0 +1,5 @@
+%section#admin
+  = link_to "&times;".html_safe, logout_path, :class => 'logout', :title => "Logout"
+  = current_user.name
+  - if controller.is_a? PageController
+    = link_to "edit page", "/editor" + request.path, id: "edit_link", data: {save_url: mercury_update_page_path(@page)}
