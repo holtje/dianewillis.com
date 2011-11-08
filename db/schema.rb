@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 4) do
+ActiveRecord::Schema.define(:version => 5) do
 
   create_table "pages", :force => true do |t|
     t.string   "title",      :null => false
@@ -23,5 +23,12 @@ ActiveRecord::Schema.define(:version => 4) do
 
   add_index "pages", ["key"], :name => "index_pages_on_key"
   add_index "pages", ["title"], :name => "index_pages_on_name", :unique => true
+
+  create_table "users", :force => true do |t|
+    t.string   "name"
+    t.string   "password_digest"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

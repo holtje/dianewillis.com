@@ -1,5 +1,7 @@
 Dianewillis::Application.routes.draw do
   root :to => 'page#view', :key => 'root'
+  get "login" => "sessions#new", :as => "login"
+  get "logout" => "sessions#destroy", :as => "logout"
 
   class PageKeyConstraint
     def matches?(request)
@@ -15,6 +17,7 @@ Dianewillis::Application.routes.draw do
       get '/:key',  :to => :view, :as => :page, :key => /.*/
     end
   end
+  resources :sessions
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
