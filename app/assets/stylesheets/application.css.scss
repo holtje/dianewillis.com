@@ -1,15 +1,23 @@
+/* Settings */
+$admin-bg-color: #e0f0ff;
+$admin-color: #456;
+$admin-border-color: #567;
+$alt-text-color: #446;
+$blueprint-background-color: #fff;
+
 /* Imports */
 @import "blueprint/reset";
 @import "blueprint/typography";
 @import "compass/css3";
 
-/* Settings */
-$subtle_color: #def;
-
-
 /* Styles  */
 body {
+  background: #eee;
   @include blueprint-typography();
+}
+
+#title {
+  margin: .6em 0;
 }
 
 #content {
@@ -17,28 +25,37 @@ body {
     text-align: justify;
   }
 
+  background: $blueprint-background-color;
+  border: 1px solid $blueprint-border-color;
   max-width: 50em;
   padding: 0 1em;
   margin: 1em auto;
+  @include box-shadow(0.3em 0.3em 0 transparentize(black, 0.8));
+
 
   blockquote {
     padding: 0.3em;
     border: 1px solid #eee;
     @include border-radius(0.3em);
     @include box-sizing(border-box);
-    @include box-shadow(0.3ex 0.3ex 0 #b3b3b3);
+    @include box-shadow(1px 1px 0 #b3b3b3);
     p:last-child {
       margin-bottom: 0;
     }
     cite {
-      color: lighten($alt-text-color, 30%);
+      text-align: right;
+      color: lighten($alt-text-color, 20%);
     }
   }
 }
 
-$admin-bg-color: #e0f0ff;
-$admin-color: #456;
-$admin-border-color: #567;
+#footer {
+  text-align: center;
+  font-size: 88%;
+  color: lighten($font-color, 30%);
+  font-style: italic;
+  margin: 1em;
+}
 
 #admin {
   position: fixed;
