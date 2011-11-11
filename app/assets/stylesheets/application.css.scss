@@ -1,14 +1,17 @@
 /* Settings */
+$text-color: #333;
 $admin-bg-color: #e0f0ff;
 $admin-color: #456;
 $admin-border-color: #567;
-$alt-text-color: #446;
+$alt-text-color: #445;
 $blueprint-background-color: #fff;
 
 /* Imports */
 @import "blueprint/reset";
 @import "blueprint/typography";
 @import "compass/css3";
+@import "admin";
+@import "flash";
 
 /* Styles  */
 body {
@@ -55,110 +58,4 @@ body {
   color: lighten($font-color, 30%);
   font-style: italic;
   margin: 1em;
-}
-
-#admin {
-  position: fixed;
-  right: 0;
-  top: 0;
-  background: $admin-bg-color;
-  color: $admin-color;
-  padding: 0.3em 1.3em 0.3em 0.8em;
-  border-width: 0 0 1px 1px;
-  border-style: solid;
-  border-color: $admin-border-color;
-  @include border-radius(0 0 0 0.3em);
-  @include box-sizing(border-box);
-  @include box-shadow(0.2em 0.2em 0 0 transparentize(black, 0.9));
-  a {
-    text-decoration: none;
-    display: block;
-    &.logout {
-      color: $admin-border-color;
-      float: right;
-      margin-right: -1em;
-      font-size: 110%;
-      font-weight: bold;
-      text-align: center;
-      height: 1em;
-      width: 1em;
-      &:hover {
-        color: lighten($admin-border-color, 20%);
-      }
-    }
-  }
-}
-
-#flash {
-  div {
-    margin: 0 auto 1em auto;
-    padding: 0.5em;
-    border: 1px solid #777;
-    p {
-      text-align: center;
-      margin: 0.2em 0.5em 0.2em 2em;
-      padding: 0;
-    }
-    a.close {
-      float: right;
-      font-size: 130%;
-      text-decoration: none;
-      padding: 0 0.3em;
-      @include text-shadow(1px 1px 2px transparentize(black, 0.8));
-      &:hover {
-        @include text-shadow(0 0 0);
-      }
-    }
-    &.notice {
-      background-color: $success-bg-color;
-      border-color: $success-border-color;
-      color: $success-color;
-      a {
-        color: $success-color;
-        &:hover {
-          color: lighten($success-color, 30%);
-        }
-      }
-    }
-    &.alert {
-      background-color: $error-bg-color;
-      border-color: $error-border-color;
-      color: $error-color;
-      a {
-        color: $error-color;
-        &:hover {
-          color: lighten($error-color, 30%);
-        }
-      }
-    }
-  }
-}
-
-#login {
-  width: 20em;
-  margin: auto;
-  padding: 2em;
-  border: 2px solid #eee;
-  header {
-    font-size: 160%;
-    text-align: center;
-  }
-  .field {
-    width: 80%;
-    margin: auto;
-    label {
-      display: block;
-    }
-    input {
-      width: 100%;
-    }
-  }
-  .actions {
-    margin: auto;
-    padding: 1em 0 0 0;
-    width: 80%;
-    input {
-      float: right;
-    }
-  }
 }

@@ -1,0 +1,44 @@
+#flash {
+  div {
+    margin: 0 auto 1em auto;
+    padding: 0.5em;
+    border: 1px solid #777;
+    p {
+      text-align: center;
+      margin: 0.2em 0.5em 0.2em 2em;
+      padding: 0;
+    }
+    a.close {
+      float: right;
+      font-size: 130%;
+      text-decoration: none;
+      padding: 0 0.3em;
+      @include text-shadow(1px 1px 2px transparentize(black, 0.8));
+      &:hover {
+        @include text-shadow(0 0 0);
+      }
+    }
+    &.notice {
+      background-color: $success-bg-color;
+      border-color: $success-border-color;
+      color: $success-color;
+      a {
+        color: $success-color;
+        &:hover {
+          color: lighten($success-color, 30%);
+        }
+      }
+    }
+    &.alert {
+      background-color: $error-bg-color;
+      border-color: $error-border-color;
+      color: $error-color;
+      a {
+        color: $error-color;
+        &:hover {
+          color: lighten($error-color, 30%);
+        }
+      }
+    }
+  }
+}
