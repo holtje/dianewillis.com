@@ -51,6 +51,15 @@ body {
       color: lighten($alt-text-color, 20%);
     }
   }
+
+  img {
+    float: right;
+    margin: 0 1em 0 1em;
+    &.left {
+      float: left;
+      margin: 0 1em 1em 0;
+    }
+  }
 }
 
 #footer {
