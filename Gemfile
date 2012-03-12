@@ -1,18 +1,18 @@
 source :rubygems
 
-gem 'rails', '3.1.1'
+gem 'rails', '~> 3.1.1'
 gem 'pg'
 gem 'jquery-rails'
 gem 'haml-rails'
 gem 'bcrypt-ruby'
-gem 'mercury-rails', git: 'https://github.com/jejacks0n/mercury.git', ref: 'a2b16bcdc9'
-gem 'redcarpet', '~> 2.0.0b5'
+gem 'mercury-rails',  '~> 0.3.1'
+gem 'redcarpet',      '~> 2.0.0'
 
 group :assets do
-  gem 'sass-rails',   '~> 3.1.4'
-  gem 'coffee-rails', '~> 3.1.1'
+  gem 'sass-rails'
+  gem 'coffee-rails'
   gem 'compass',      '~> 0.12.alpha'
-  gem 'uglifier',     '>= 1.0.3'
+  gem 'uglifier'
 end
 
 group :test, :development do
@@ -24,7 +24,7 @@ group :test, :development do
   gem 'database_cleaner'
   gem "factory_girl_rails"
   gem "capybara"
-  gem "spork", "~> 0.9.0.rc9"
+  gem "spork", ">= 0.9.0"
   gem "guard-bundler"
   gem "guard-rspec"
   gem "guard-spork"
