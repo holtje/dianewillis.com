@@ -7,6 +7,7 @@ gem 'haml-rails'
 gem 'bcrypt-ruby'
 gem 'mercury-rails',  '~> 0.3.1'
 gem 'redcarpet',      '~> 2.0.0'
+gem 'thin'
 
 group :assets do
   gem 'sass-rails'
@@ -33,5 +34,6 @@ end
 
 group :development do
   gem 'heroku'
+  gem 'foreman'
   gem 'taps'
 end
