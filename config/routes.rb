@@ -16,15 +16,14 @@ Dianewillis::Application.routes.draw do
 
   Mercury::Engine.routes
 
-  root :to => 'page#show', :key => 'root'
+  root :to => 'page#show',   :via => [:get], :key => 'root'
+  match "" => 'page#update', :via => [:put], :key => 'root'
   get "login" => "sessions#new", :as => "login"
   get "logout" => "sessions#destroy", :as => "logout"
 
   resources :sessions
 
-  resources :page, :only => [:mercury_update, :show] do
-    member { post :mercury_update }
-  end
+  resources :page, :only => [:show]
 
   controller :page do
     constraints PageKeyConstraint.new do

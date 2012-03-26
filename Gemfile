@@ -6,6 +6,8 @@ gem 'jquery-rails'
 gem 'haml-rails'
 gem 'bcrypt-ruby'
 gem 'mercury-rails',  '~> 0.3.1'
+#gem 'mercury-rails', git: 'https://github.com/jejacks0n/mercury.git'
+
 gem 'redcarpet',      '~> 2.0.0'
 gem 'thin'
 

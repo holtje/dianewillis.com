@@ -59,6 +59,15 @@ module Dianewillis
       g.template_engine :haml
     end
 
+    # Mercury configurations
+    config.mercury_config = {
+    }
+    config.mercury_page_editor_config = {
+      saveStyle: 'form',
+      saveMethod: 'PUT',
+      visible: true,
+    }
+
     # Turn off annoying timestamps in migrations
     config.active_record.timestamped_migrations = false
   end

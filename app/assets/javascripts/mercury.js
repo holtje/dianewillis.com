@@ -22,14 +22,14 @@
  * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
- * Minimum jQuery requirements are 1.6
- *= require mercury/dependencies/jquery-1.6
+ *= require_self
+ *
+ * Minimum jQuery requirements are 1.7
+ *= require mercury/dependencies/jquery-1.7
  *
  * You can include the Rails jQuery ujs script here to get some nicer behaviors in modals, panels and lightviews when
  * using :remote => true within the contents rendered in them.
  * require jquery_ujs
- *
- *= require_self
  *
  * If you want to override Mercury functionality, you can do so in a custom file that binds to the mercury:loaded event,
  * or do so at the end of the current file (mercury.js).  There's an example that will help you get started.
@@ -40,6 +40,10 @@
  *
  * Require Mercury Editor itself.
  *= require mercury/mercury
+ *
+ * Require any localizations you wish to support
+ * Example: es.locale, or fr.locale -- regional dialects are in each language file so never en_US for instance.
+ * require mercury/locales/swedish_chef.locale
  *
  * Add all requires for plugins that extend or change the behavior of Mercury Editor.
  * require mercury/plugins/save_as_xml/plugin.js
@@ -69,35 +73,45 @@ window.Mercury = {
     //
     // ### The available button types are:
     //
-    // - toggle:  toggles on or off when clicked, otherwise behaves like a button
-    // - modal:   opens a modal window, expects the action to be one of:
+    // - toggle:    toggles on or off when clicked, otherwise behaves like a button
+    // - modal:     opens a modal window, expects the action to be one of:
     //   1. a string url
     //   2. a function that returns a string url
-    // - panel:   opens a panel dialog, expects the action to be one of:
+    // - lightview: opens a lightview window (like modal, but different UI), expects the action to be one of:
     //   1. a string url
     //   2. a function that returns a string url
-    // - palette: opens a palette window, expects the action to be one of:
+    // - panel:     opens a panel dialog, expects the action to be one of:
     //   1. a string url
     //   2. a function that returns a string url
-    // - select:  opens a pulldown style window, expects the action to be one of:
+    // - palette:   opens a palette window, expects the action to be one of:
     //   1. a string url
     //   2. a function that returns a string url
-    // - context: calls a callback function, expects the action to be:
+    // - select:    opens a pulldown style window, expects the action to be one of:
+    //   1. a string url
+    //   2. a function that returns a string url
+    // - context:   calls a callback function, expects the action to be:
     //   1. a function that returns a boolean to highlight the button
     //   note: if a function isn't provided, the key will be passed to the contextHandler, in which case a default
     //         context will be used (for more info read the Contexts section below)
-    // - mode:    toggle a given mode in the editor, expects the action to be:
+    // - mode:      toggle a given mode in the editor, expects the action to be:
     //   1. a string, denoting the name of the mode
     //   note: it's assumed that when a specific mode is turned on, all other modes will be turned off, which happens
     //         automatically, thus putting the editor into a specific "state"
-    // - regions: allows buttons to be enabled/disabled based on what region type has focus, expects the action to be:
+    // - regions:   allows buttons to be enabled/disabled based on what region type has focus, expects the action to be:
     //   1. an array of region types (eg. ['editable', 'markupable'])
-    // - preload: allows some dialog views to be loaded when the button is created instead of on first open, expects:
+    // - preload:   allows some dialog views to be loaded when the button is created instead of on first open, expects:
     //   1. a boolean true / false
     //   note: this is only used by panels, selects, and palettes
     //
     // Separators are any "button" that's not an array, and are expected to be a string.  You can use two different
     // separator styles: line ('-'), and spacer (' ').
+    //
+    // ### Adding Contexts
+    //
+    // Contexts are used callback functions used for highlighting and disabling/enabling buttons and buttongroups.  When
+    // the cursor enters an element within an html region for instance we want to disable or highlight buttons based on
+    // the properties of the given node.  You can see examples of contexts in, and add your own to:
+    // `Mercury.Toolbar.Button.contexts` and `Mercury.Toolbar.ButtonGroup.contexts`
     toolbars: {
       primary: {
         save:                  ['Save', 'Save this page'],
@@ -111,20 +125,19 @@ window.Mercury = {
         insertLink:            ['Link', 'Insert Link', { modal: '/mercury/modals/link.html', regions: ['editable', 'markupable'] }],
         insertMedia:           ['Media', 'Insert Media (images and videos)', { modal: '/mercury/modals/media.html', regions: ['editable', 'markupable'] }],
         insertTable:           ['Table', 'Insert Table', { modal: '/mercury/modals/table.html', regions: ['editable', 'markupable'] }],
-        sep2:                  ' ',
         insertCharacter:       ['Character', 'Special Characters', { modal: '/mercury/modals/character.html', regions: ['editable', 'markupable'] }],
-        // snippetPanel:          ['Snippet', 'Snippet Panel', { panel: '/mercury/panels/snippets.html' }],
-        // sep2:                  ' ',
-        // historyPanel:          ['History', 'Page Version History', { panel: '/mercury/panels/history.html' }],
-        // sep3:                  ' ',
-        // notesPanel:            ['Notes', 'Page Notes', { panel: '/mercury/panels/notes.html' }]
+        //snippetPanel:          ['Snippet', 'Snippet Panel', { panel: '/mercury/panels/snippets.html' }],
+        //sep2:                  ' ',
+        //historyPanel:          ['History', 'Page Version History', { panel: '/mercury/panels/history.html' }],
+        //sep3:                  ' ',
+        //notesPanel:            ['Notes', 'Page Notes', { panel: '/mercury/panels/notes.html' }]
         },
 
       editable: {
         _regions:              ['editable', 'markupable'],
         predefined:            {
-          // style:               ['Style', null, { select: '/mercury/selects/style.html', preload: true }],
-          // sep1:                ' ',
+          style:               ['Style', null, { select: '/mercury/selects/style.html', preload: true }],
+          sep1:                ' ',
           formatblock:         ['Block Format', null, { select: '/mercury/selects/formatblock.html', preload: true }],
           sep2:                '-'
           },
@@ -160,8 +173,8 @@ window.Mercury = {
           sep:                 '-'
           },
         indent:                {
-          outdent:             ['Decrease Indentation', null],
-          indent:              ['Increase Indentation', null],
+          outdent:             ['Decrease Indentation'],
+          indent:              ['Increase Indentation'],
           sep:                 '-'
           },
         table:                 {
@@ -190,21 +203,158 @@ window.Mercury = {
         editors:               {
           htmlEditor:          ['Edit HTML', 'Edit the HTML content', { regions: ['editable'] }]
           }
-        }
+        },
 
+      snippetable: {
+        _custom:               true,
+        actions:               {
+          editSnippet:         ['Edit Snippet Settings'],
+          sep1:                ' ',
+          removeSnippet:       ['Remove Snippet']
+          }
+        }
       },
 
 
-    // ## Hijacking Links & Forms
+    // ## Region Options
     //
-    // Mercury will hijack links and forms that don't have a target set, or the target is set to _self and will set it
-    // to _top.  This is because the target must be set properly for Mercury to not get in the way of some
-    // functionality, like proper page loads on form submissions etc.  Mercury doesn't do this to links or forms that
-    // are within editable regions because it doesn't want to impact the html that's saved.  With that being explained,
-    // you can add classes to links or forms that you don't want this behavior added to.  Let's say you have links that
-    // open a lightbox style window, and you don't want the targets of these to be set to _top.  You can add classes to
-    // this array, and they will be ignored when the hijacking is applied.
-    nonHijackableClasses: [],
+    // You can customize some aspects of how regions are found, identified, and saved.
+    //
+    // className: Mercury identifies editable regions by a className.  This classname has to be added in your HTML in
+    // advance, and is the only real code/naming exposed in the implementation of Mercury.  To allow this to be as
+    // configurable as possible, you can set the name of the class.  When switching to preview mode, this configuration
+    // is also used to generate a class to indicate that Mercury is in preview mode by appending it with '-preview' (so
+    // by default it would be mercury-region-preview)
+    //
+    // identifier: This is used as a unique identifier for any given region (and thus should be unique to the page).
+    // By default this is the id attribute but can be changed to a data attribute should you want to use something
+    // custom instead.
+    //
+    // dataAttributes: The dataAttributes is an array of data attributes that will be serialized and returned to the
+    // server upon saving.  These attributes, when applied to a Mercury region element, will be automatically serialized
+    // and submitted with the AJAX request sent when a page is saved.  These are expected to be HTML5 data attributes,
+    // and 'data-' will automatically be prepended to each item in this directive. (ex. ['scope', 'version'])
+    regions: {
+      className: 'mercury-region',
+      identifier: 'id',
+      dataAttributes: []
+      },
+
+
+    // ## Snippet Options / Preview
+    //
+    // When a user drags a snippet onto the page they'll be prompted to enter options for the given snippet.  The server
+    // is expected to respond with a form.  Once the user submits this form, an Ajax request is sent to the server with
+    // the options provided; this preview request is expected to respond with the rendered markup for the snippet.
+    //
+    // method: The HTTP method used when submitting both the options and the preview.  We use POST by default because a
+    // snippet options form may contain large text inputs and we don't want that to be truncated when sent to the
+    // server.
+    //
+    // optionsUrl: The url that the options form will be loaded from.
+    //
+    // previewUrl: The url that the options will be submitted to, and will return the rendered snippet markup.
+    //
+    // **Note:** `:name` will be replaced with the snippet name in the urls (eg. /mercury/snippets/example/options.html)
+    snippets: {
+      method: 'POST',
+      optionsUrl: '/mercury/snippets/:name/options.html',
+      previewUrl: '/mercury/snippets/:name/preview.html'
+      },
+
+
+    // ## Image Uploading
+    //
+    // If you drag images from your desktop into regions that support it, it will be uploaded to the server and inserted
+    // into the region.  You can disable or enable this feature, the accepted mime-types, file size restrictions, and
+    // other things related to uploading.
+    //
+    // **Note:** Image uploading is only supported in some region types, and some browsers.
+    //
+    // enabled: You can set this to true, or false if you want to disable the feature entirely.
+    //
+    // allowedMimeTypes: You can restrict the types of files that can be uploaded by providing a list of allowed mime
+    // types.
+    //
+    // maxFileSize: You can restrict large files by setting the maxFileSize (in bytes).
+    //
+    // inputName: When uploading, a form is generated and submitted to the server via Ajax.  If your server would prefer
+    // a different name for how the image comes through, you can change the inputName.
+    //
+    // url: The url that the image upload will be submitted to.
+    //
+    // handler: You can use false to let Mercury handle it for you, or you can provide a handler function that can
+    // modify the response from the server.  This can be useful if your server doesn't respond the way Mercury expects.
+    // The handler function should take the response from the server and return an object that matches:
+    // `{image: {url: '[your provided url]'}`
+    uploading: {
+      enabled: true,
+      allowedMimeTypes: ['image/jpeg', 'image/gif', 'image/png'],
+      maxFileSize: 1235242880,
+      inputName: 'image[image]',
+      url: '/mercury/images',
+      handler: false
+      },
+
+
+    // ## Localization / I18n
+    //
+    // Include the .locale files you want to support when loading Mercury.  The files are always named by the language,
+    // and not the regional dialect (eg. en.locale.js) because the regional dialects are nested within the primary
+    // locale files.
+    //
+    // The client locale will be used first, and if no proper locale file is found for their language then the fallback
+    // preferredLocale configuration will be used.  If one isn't provided, and the client locale isn't included, the
+    // strings will remain untranslated.
+    //
+    // enabled: Set to false to disable, true to enable.
+    //
+    // preferredLocale: If a client doesn't support the locales you've included, this is used as a fallback.
+    localization: {
+      enabled: false,
+      preferredLocale: 'swedish_chef-BORK'
+      },
+
+
+    // ## Behaviors
+    //
+    // Behaviors are used to change the default behaviors of a given region type when a given button is clicked.  For
+    // example, you may prefer to add HR tags using an HR wrapped within a div with a classname (for styling).  You
+    // can add your own complex behaviors here and they'll be shared across all regions.
+    //
+    // If you want to add behaviors to specific region types, you can mix them into the actions property of any region
+    // type.
+    //
+    //     Mercury.Regions.Editable.actions.htmlEditor = function() {}
+    //
+    // You can see how the behavior matches up directly with the button names.  It's also important to note that the
+    // callback functions are executed within the scope of the given region, so you have access to all it's methods.
+    behaviors: {
+      //foreColor: function(selection, options) { selection.wrap('<span style="color:' + options.value.toHex() + '">', true) },
+      htmlEditor: function() { Mercury.modal('/mercury/modals/htmleditor.html', { title: 'HTML Editor', fullHeight: true, handler: 'htmlEditor' }); }
+      },
+
+
+    // ## Global Behaviors
+    //
+    // Global behaviors are much like behaviors, but are more "global".  Things like save, exit, etc. can be included
+    // here.  They'll only be called once, and execute within the scope of whatever editor is instantiated (eg.
+    // PageEditor).
+    //
+    // An example of changing how saving works:
+    //
+    //     save: function() {
+    //       var data = top.JSON.stringify(this.serialize(), null, '  ');
+    //       var content = '<textarea style="width:500px;height:200px" wrap="off">' + data + '</textarea>';
+    //       Mercury.modal(null, {title: 'Saving', closeButton: true, content: content})
+    //     }
+    //
+    // This is a nice way to add functionality, when the behaviors aren't region specific.  These can be triggered by a
+    // button, or manually with `Mercury.trigger('action', {action: 'barrelRoll'})`
+    globalBehaviors: {
+      exit: function() { window.location.href = this.iframeSrc() },
+      barrelRoll: function() { $('body').css({webkitTransform: 'rotate(360deg)'}) }
+      },
 
 
     // ## Ajax and CSRF Headers
@@ -216,6 +366,23 @@ window.Mercury = {
     csrfSelector: 'meta[name="csrf-token"]',
     csrfHeader: 'X-CSRF-Token',
 
+    // ## Editor URLs
+    //
+    // When loading a given page, you may want to tweak this regex.  It's to allow the url to differ from the page
+    // you're editing, and the url at which you access it.
+    editorUrlRegEx: /([http|https]:\/\/.[^\/]*)\/editor\/?(.*)/i,
+
+    // ## Hijacking Links & Forms
+    //
+    // Mercury will hijack links and forms that don't have a target set, or the target is set to _self and will set it
+    // to _parent.  This is because the target must be set properly for Mercury to not get in the way of some
+    // functionality, like proper page loads on form submissions etc.  Mercury doesn't do this to links or forms that
+    // are within editable regions because it doesn't want to impact the html that's saved.  With that being explained,
+    // you can add classes to links or forms that you don't want this behavior added to.  Let's say you have links that
+    // open a lightbox style window, and you don't want the targets of these to be set to _parent.  You can add classes
+    // to this array, and they will be ignored when the hijacking is applied.
+    nonHijackableClasses: [],
+
 
     // ## Pasting & Sanitizing
     //
@@ -224,17 +391,15 @@ window.Mercury = {
     // desired feature or an annoyance, so you can enable various sanitizing methods to clean the content when it's
     // pasted.
     //
-    // ### Sanitizing options:
+    // sanitize: Can be any of the following:
     // - false: no sanitizing is done, the content is pasted the exact same as it was copied by the user
     // - 'whitelist': content is cleaned using the settings specified in the tag white list (described below)
     // - 'text': all html is stripped before pasting, leaving only the raw text
     //
-    // ### Using the whitelist configuration
-    //
-    // The white list allows you to specify tags and attributes that are allowed when pasting content.  Each item in
-    // this object should contain the allowed tag, and an array of attributes that are allowed on that tag.  If the
-    // allowed attributes array is empty, all attributes will be removed.  If a tag is not present in this list, it will
-    // be removed, but without removing any of the text or tags inside it.
+    // whitelist: The white list allows you to specify tags and attributes that are allowed when pasting content.  Each
+    // item in this object should contain the allowed tag, and an array of attributes that are allowed on that tag.  If
+    // the allowed attributes array is empty, all attributes will be removed.  If a tag is not present in this list, it
+    // will be removed, but without removing any of the text or tags inside it.
     //
     // **Note:** Content is *always* sanitized if looks like it's from MS Word or similar editors regardless of this
     // configuration.
@@ -274,83 +439,13 @@ window.Mercury = {
       },
 
 
-    // ## Snippet Options and Preview
-    //
-    // When a user drags a snippet onto the page they'll be prompted to enter options for the given snippet.  The server
-    // is expected to respond with a form.  Once the user submits this form, an Ajax request is sent to the server with
-    // the options provided; this preview request is expected to respond with the rendered markup for the snippet.
-    //
-    // Name will be replaced with the snippet name (eg. example)
-    snippets: {
-      enabled: false,
-      method: 'POST',
-      optionsUrl: '/mercury/snippets/:name/options.html',
-      previewUrl: '/mercury/snippets/:name/preview.html'
-      },
-
-
-    // ## Image Uploading
-    //
-    // If you drag images (while pressing shift) from your desktop into regions that support it, it will be uploaded
-    // to the server and inserted into the region.  This configuration allows you to specify if you want to
-    // disable/enable this feature, the accepted mime-types, file size restrictions, and other things related to
-    // uploading.  You can optionally provide a handler function that takes the response from the server and returns an
-    // object: {image: {url: '[your provided url]'}
-    //
-    // **Note:** Image uploading is only supported in some region types, and some browsers.
-    uploading: {
-      enabled: false,
-      allowedMimeTypes: ['image/jpeg', 'image/gif', 'image/png'],
-      maxFileSize: 1235242880,
-      inputName: 'image[image]',
-      url: '/images',
-      handler: false
-      },
-
-
-    // ## Behaviors
-    //
-    // Behaviors are used to change the default behaviors of a given region type when a given button is clicked.  For
-    // example, you may prefer to add HR tags using an HR wrapped within a div with a classname (for styling).  You
-    // can add your own complex behaviors here.
-    //
-    // You can see how the behavior matches up directly with the button names.  It's also important to note that the
-    // callback functions are executed within the scope of the given region, so you have access to all it's methods.
-    // Here's some examples to help you get started.
-    behaviors: {
-      //foreColor: function(selection, options) { selection.wrap('<span style="color:' + options.value.toHex() + '">', true) },
-      htmlEditor: function() { Mercury.modal('/mercury/modals/htmleditor.html', { title: 'HTML Editor', fullHeight: true, handler: 'htmlEditor' }); }
-      },
-
-
-    // ## Contexts
-    //
-    // Contexts are used callback functions used for highlighting and disabling/enabling buttons and buttongroups.
-    // When the cursor enters an element within an html region for instance we want to disable or highlight buttons
-    // based on the properties of the given node.  You can see some examples of contexts in:
-    //
-    // Mercury.Toolbar.Button.contexts
-    // and
-    // Mercury.Toolbar.ButtonGroup.contexts
-
-
-    // ## Region Class
-    //
-    // Mercury identifies editable regions by a region class.  This class has to be added in your HTML in advance, and
-    // is the only real Mercury code/naming exposed in the implementation of Mercury.  To allow this to be as
-    // configurable as possible, you can set the name of the class here.  When switching to preview mode, this
-    // configuration is used to generate a class to indicate that Mercury is in preview mode -- which will be this
-    // class with '-preview' appended (so, mercury-region-preview by default)
-    regionClass: 'mercury-region',
-
-
-    // ## Styles
+    // ## Injected Styles
     //
     // Mercury tries to stay as much out of your code as possible, but because regions appear within your document we
     // need to include a few styles to indicate regions, as well as the different states of them (eg. focused).  These
-    // styles are injected into your document, and as simple as they might be, you may want to change them.  You can do
-    // so here.  {{regionClass}} will be automatically replaced with whatever you have set in the regionClass
-    // configuration directive.
+    // styles are injected into your document, and as simple as they might be, you may want to change them.
+    //
+    // {{regionClass}} will be automatically replaced with whatever you have set in the regions.class config directive.
     injectedStyles: '' +
       '.{{regionClass}} { min-height: 10px; outline: 1px dotted #09F } ' +
       '.{{regionClass}}:focus, .{{regionClass}}.focus { outline: none; -webkit-box-shadow: 0 0 10px #09F, 0 0 1px #045; box-shadow: 0 0 10px #09F, 0 0 1px #045 }' +
@@ -368,24 +463,13 @@ window.Mercury = {
   // ## Debug Mode
   //
   // Turning debug mode on will log events and other various things (using console.debug if available).
-  debug: false
+  debug: false,
+
+  // The onload method is provided as a callback in case you want to override default Mercury Editor behavior.  It will
+  // be called directly after the Mercury scripts have loaded, but before anything has been initialized.  It's a good
+  // place to add or change functionality.
+  onload: function() {
+    //Mercury.PageEditor.prototype.iframeSrc = function(url) { return '/testing'; }
+  },
 
 };
-
-// The mercury:loaded event is provided in case you want to override default Mercury Editor behavior.  It will fire
-// directly after the Mercury scripts have loaded, but before anything has been initialized.  It's a good place to add
-// or change functionality.
-jQuery(window).bind('mercury:loaded', function() {
-  //Mercury.PageEditor.prototype.iframeSrc = function(url) { return '/testing'; }
-});
-
-jQuery(window).bind('mercury:ready', function() {
-  var link = $('#mercury_iframe').contents().find('#edit_link');
-  Mercury.saveURL = link.data('save-url');
-  link.hide();
-  $('#mercury_iframe').contents().find('#admin').hide();
-});
-
-jQuery(window).bind('mercury:saved', function() {
-  window.location = window.location.href.replace(/\/editor\//i, '/');
-});
