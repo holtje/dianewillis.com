@@ -1,4 +1,5 @@
 class Page < ActiveRecord::Base
+  attr_accessible :title, :body, :key
   validates :title,
     :length => { :minimum => 0, :maximum => 255 },
     :presence => true
