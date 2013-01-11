@@ -1,6 +1,6 @@
 source :rubygems
 
-gem 'rails', '~> 3.1.1'
+gem 'rails', '~> 3.1.10'
 gem 'pg'
 gem 'jquery-rails'
 gem 'haml-rails'
@@ -19,7 +19,6 @@ end
 
 group :test, :development do
   gem "rspec-rails"
-  gem 'rb-fsevent'
   gem 'growl'
   gem 'pry'
   gem 'factory_girl_rails'
@@ -27,10 +26,15 @@ group :test, :development do
   gem "factory_girl_rails"
   gem "capybara"
   gem "spork", ">= 0.9.0"
+
+  gem 'sqlite3'
+
   gem "guard-bundler"
   gem "guard-rspec"
   gem "guard-spork"
   gem "guard-migrate"
+
+  gem 'rb-fsevent'
 end
 
 group :development do
