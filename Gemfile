@@ -1,11 +1,11 @@
 source :rubygems
 
-gem 'rails', '~> 3.1.10'
+gem 'rails', '~> 3.2.11'
 gem 'pg'
 gem 'jquery-rails'
 gem 'haml-rails'
 gem 'bcrypt-ruby'
-gem 'mercury-rails',  '~> 0.3.1'
+gem 'mercury-rails',  '~> 0.9.0'
 
 gem 'redcarpet',      '~> 2.0.0'
 gem 'thin'

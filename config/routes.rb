@@ -11,6 +11,8 @@ class PageKeyConstraint
 end
 
 Dianewillis::Application.routes.draw do
+  mount Mercury::Engine => '/'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
