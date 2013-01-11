@@ -47,7 +47,7 @@ Dianewillis::Application.configure do
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
-  config.assets.precompile += %w( mercury.js mercury.css mercury_overrides.js )
+  config.assets.precompile += %w( mercury.js mercury.css mercury_overrides.js jquery-1.7.js )
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
