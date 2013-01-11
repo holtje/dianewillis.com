@@ -1,7 +1,8 @@
 begin
-page = Page.find_by_key("root")
-page.title = "Diane Willis"
-page.body = '<p>
+  page = Page.find_or_create_by_key("root")
+  page.title = "Diane Willis"
+  page.body = <<-HTMLDATA
+<p>
 In Spring, 1995, Diane Willis traveled through a black tunnel, saw a white light and her life was changed forever. Since then, she has been guided from &ldquo;one amazing experience to another,&rdquo; as she set about accomplishing the mission she was given: to help others lose their fear of death.</p><p>In May, 1998, Diane was guided to start the Chicago chapter of IANDS, which continues to grow, and in June, 2004, hosted the North American conference of IANDS. She also spends time working in hospice and consulting with people who have death-related issues. In May, 2008, she and the Chicago IANDS Board initiated the beginnings of a new organization, The International Society for Extraordinary Experiences (iSee), which is for a broader spectrum of experiences. (<a href="http://www.iseespirit.org">http:&#47;&#47;www.iseespirit.org</a>)</p><p>Being a Gemini, she has to have two paths going and after a trip to Egypt (on three days notice) in 1995, she was led to start improvising music, a skill she did not have before she went to the other side. She has performed on her Native American flutes with some of the world&#39;s greatest spiritual teachers, including Louise Hay, Marianne Williamson, Caroline Myss, Ron Roth, Sonia Choquette, Paul Winter and others, including Cecil Taylor. She facilitated the Chicago Native Flutes Circle, a monthly meeting which explores many aspects of the Native American flute and flute-playing and her first CD, Improvisations From the Other Side: Healing Music for Meditation and Relaxation, came out in August, 2003.</p>
 <h2>Improvisation from the Other Side (CD)</h2>
 <p>Healing Music for Meditation and Relaxation </p>
@@ -69,7 +70,7 @@ vocabulary. There is no evidence that the type of experience is related to wheth
 experience).</p><p>An experience may include the feeling of being out of the physical body, moving through a darkness or tunnel, encountering the presence of deceased loved ones and&#47;or other entities, and an indescribable light or menacing darkness. Many people say they have glimpsed the pattern and meaning of life and the universe, or have been given information beyond ordinary human capacities. For most people the experience is joyful beyond words, although others tell of unpleasant or terrifying experiences. When adequately understood, every type of NDE reveals issues of deep significance to the life of the individual and to humankind in general.</p><p>Research has shown that NDEs in Western civilization occur with similar frequency and content to people of both genders and of all ages, races, levels of education, socioeconomic levels, spiritual&#47;religious affiliations (or non-affiliation), sexual orientations (gay&#47;lesbian, bisexual, or heterosexual), and precipitating circumstances (illness, accident, suicide, medical procedure, etc.). Research in non-Western cultures has not been as extensive but suggests that certain universal or very common themes may be present, such as a boundary between dimensions and one or more supernatural entities or beings.</p><p>To find out more about near-death experiences, please visit <a href="http://chicagoiands.org/">http:&#47;&#47;chicagoiands.org&#47;</a></p>
 <h2>Contact Diane Willis</h2>
 <p>If you wish to contact Diane Willis, you may email her at <a href="mailto:docflute@aol.com"><a href="mailto:docflute@aol.com">docflute@aol.com</a>.</a></p>
-'
+  HTMLDATA
   page.save!
   puts "Loaded seed!"
 end

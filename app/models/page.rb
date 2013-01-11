@@ -14,13 +14,13 @@ class Page < ActiveRecord::Base
 
 
   def body
-    read_attribute(:body).html_safe
+    read_attribute(:body).to_s.html_safe
   end
   def body= value
     write_attribute(:body, Redcarpet::Render::SmartyPants.render(value))
   end
   def title
-    read_attribute(:title).html_safe
+    read_attribute(:title).to_s.html_safe
   end
   def title= value
     write_attribute(:title, Redcarpet::Render::SmartyPants.render(value))
