@@ -1,13 +1,16 @@
-source "https://rubygems.org"
+# encoding: utf-8
+source 'https://rubygems.org'
+ruby File.read('.ruby-version').strip
 
-gem 'rails', '~> 3.2.12'
+gem 'rails',          '~> 3.2.16'
+gem 'nokogiri'
 gem 'pg'
 gem 'jquery-rails'
 gem 'haml-rails'
-gem 'bcrypt-ruby'
+gem 'bcrypt-ruby',    '~> 3.0.0'
 gem 'mercury-rails',  '~> 0.9.0'
 
-gem 'redcarpet',      '~> 2.0.0'
+gem 'redcarpet',      '~> 2.0'
 gem 'thin'
 
 group :assets do
@@ -18,27 +21,34 @@ group :assets do
 end
 
 group :test, :development do
-  gem "rspec-rails"
-  gem 'growl'
-  gem 'pry'
+  gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
-  gem "factory_girl_rails"
-  gem "capybara"
-  gem "spork", ">= 0.9.0"
+  gem 'capybara'
 
   gem 'sqlite3'
-
-  gem "guard-bundler"
-  gem "guard-rspec"
-  gem "guard-spork"
-  gem "guard-migrate"
-
-  gem 'rb-fsevent'
 end
 
 group :development do
+  gem 'letter_opener'
+
+  gem 'better_errors'
+  gem 'binding_of_caller'
+
+  gem 'pry'
+
   gem 'heroku'
   gem 'foreman'
   gem 'taps'
+
+  gem 'guard-bundler'
+  gem 'guard-rspec'
+  gem 'guard-migrate'
+  gem 'guard-shell'
+
+  gem 'spring'
+  gem 'spring-commands-rspec'
+
+  gem 'terminal-notifier-guard'
+  gem 'terminal-notifier'
 end
