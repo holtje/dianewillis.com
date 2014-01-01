@@ -6,6 +6,18 @@ require 'rspec/rails'
 require 'rspec/autorun'
 require 'database_cleaner'
 
+if ENV['TRAVIS'] == 'true'
+  require 'coveralls'
+  Coveralls.wear!
+else
+  begin
+    require 'simplecov'
+    SimpleCov.start
+  rescue LoadError
+    warn 'Unable to load simplecov; skipping coverage report'
+  end
+end
+
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 RSpec.configure do |config|

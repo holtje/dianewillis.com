@@ -27,6 +27,8 @@ group :test, :development do
   gem 'capybara'
 
   gem 'sqlite3'
+
+  gem 'coveralls',   '~> 0.6'
 end
 
 group :development do
