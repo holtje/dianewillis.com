@@ -9,9 +9,10 @@ gem 'jquery-rails'
 gem 'haml-rails'
 gem 'bcrypt-ruby',    '~> 3.0.0'
 gem 'mercury-rails',  '~> 0.9.0'
+gem 'rails_12factor', group: :production
 
 gem 'redcarpet',      '~> 2.0'
-gem 'thin'
+gem 'unicorn'
 
 group :assets do
   gem 'sass-rails'
@@ -39,9 +40,7 @@ group :development do
 
   gem 'pry'
 
-  gem 'heroku'
   gem 'foreman'
-  gem 'taps'
 
   gem 'guard-bundler'
   gem 'guard-rspec'

@@ -41,9 +41,11 @@ module Dianewillis
     config.mercury_page_editor_config = {
       saveStyle: 'form',
       saveMethod: 'PUT',
-      visible: true,
+      visible: true
     }
 
     config.active_record.timestamped_migrations = false
+
+    config.assets.initialize_on_precompile = false
   end
 end
