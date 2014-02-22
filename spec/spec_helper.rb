@@ -1,24 +1,26 @@
-require 'rubygems'
+# encoding: utf-8
 
-ENV["RAILS_ENV"] ||= 'test'
-require File.expand_path("../../config/environment", __FILE__)
+ENV['RAILS_ENV'] ||= 'test'
+
+# This must be first!
+require 'simplecov'
+require 'coveralls'
+
+if ENV['SKIP_COVERAGE'].nil?
+  SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
+    Coveralls::SimpleCov::Formatter,
+    SimpleCov::Formatter::HTMLFormatter
+  ]
+  SimpleCov.command_name 'RSpec'
+  SimpleCov.start 'rails'
+end
+
+require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 require 'database_cleaner'
 
-if ENV['TRAVIS'] == 'true'
-  require 'coveralls'
-  Coveralls.wear!
-else
-  begin
-    require 'simplecov'
-    SimpleCov.start
-  rescue LoadError
-    warn 'Unable to load simplecov; skipping coverage report'
-  end
-end
-
-Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 RSpec.configure do |config|
   config.mock_with :rspec
@@ -26,7 +28,7 @@ RSpec.configure do |config|
   config.infer_base_class_for_anonymous_controllers = false
   config.include FactoryGirl::Syntax::Methods
 
- config.before(:suite) do
+  config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
     DatabaseCleaner.clean_with(:truncation)
   end

@@ -1,5 +1,4 @@
-# A sample Guardfile
-# More info at https://github.com/guard/guard#readme
+# coding: utf-8
 
 guard 'bundler' do
   watch('Gemfile')

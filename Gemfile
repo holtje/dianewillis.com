@@ -2,8 +2,8 @@
 source 'https://rubygems.org'
 ruby File.read('.ruby-version').strip
 
-gem 'rails',          '~> 3.2.16'
-gem 'nokogiri'
+gem 'rails',          '~> 3.2.17'
+gem 'nokogiri',       '~> 1.6'
 gem 'pg'
 gem 'jquery-rails'
 gem 'haml-rails'
@@ -28,7 +28,7 @@ group :test, :development do
 
   gem 'sqlite3'
 
-  gem 'coveralls',   '~> 0.6'
+  gem 'coveralls',   '~> 0.6',     require: false
 end
 
 group :development do
@@ -51,6 +51,7 @@ group :development do
   gem 'spring'
   gem 'spring-commands-rspec'
 
+  gem 'rb-fsevent'
   gem 'terminal-notifier-guard'
   gem 'terminal-notifier'
 end
