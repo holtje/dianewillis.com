@@ -13,6 +13,7 @@ gem 'rails_12factor', group: :production
 
 gem 'redcarpet',      '~> 2.0'
 gem 'unicorn'
+gem 'rubocop'
 
 group :assets do
   gem 'sass-rails'
@@ -26,7 +27,6 @@ group :test, :development do
   gem 'factory_girl_rails'
   gem 'database_cleaner'
   gem 'capybara'
-  gem 'rubocop'
 
   gem 'sqlite3'
 
