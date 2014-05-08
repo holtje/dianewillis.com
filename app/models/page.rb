@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: pages
+#
+#  id         :integer          not null, primary key
+#  title      :string(255)      not null
+#  body       :text             not null
+#  created_at :datetime
+#  updated_at :datetime
+#  key        :string(255)      not null
+#
+# Indexes
+#
+#  index_pages_on_key   (key)
+#  index_pages_on_name  (title) UNIQUE
+#
+
 class Page < ActiveRecord::Base
   attr_accessible :title, :body, :key
   validates :title,

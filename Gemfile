@@ -7,7 +7,7 @@ gem 'nokogiri',       '~> 1.6'
 gem 'pg'
 gem 'jquery-rails'
 gem 'haml-rails'
-gem 'bcrypt-ruby',    '~> 3.0'
+gem 'bcrypt-ruby',    '~> 3.0.1'
 gem 'mercury-rails',  '~> 0.9'
 gem 'rails_12factor', group: :production
 
@@ -35,6 +35,7 @@ end
 
 group :development do
   gem 'letter_opener'
+  gem 'annotate'
 
   gem 'better_errors'
   gem 'binding_of_caller'
