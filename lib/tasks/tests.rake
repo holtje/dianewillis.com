@@ -1,5 +1,4 @@
 require 'rubocop/rake_task'
-require 'pry'
 
 # Clear out rails' test tasks
 Rake::Task.tasks.each do |task|
