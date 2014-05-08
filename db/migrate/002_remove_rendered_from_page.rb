@@ -8,6 +8,6 @@ class RemoveRenderedFromPage < ActiveRecord::Migration
   end
 
   def down
-    raise "Can't roll this back, sorry."
+    fail "Can't roll this back, sorry."
   end
 end

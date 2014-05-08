@@ -24,11 +24,12 @@
 
 # encoding: UTF-8
 
+# A constraint for pages that are in the DB.
 class PageKeyConstraint
   def matches?(request)
-    if Rails.env.test? and request.params[:key].nil?
+    if Rails.env.test? && request.params[:key].nil?
       # When running as specs, request.params doesn't work right.
-      request.params[:key] = request.env["PATH_INFO"].sub '/', ''
+      request.params[:key] = request.env['PATH_INFO'].sub '/', ''
     end
     Page.find_by_key(request.params[:key])
   end
@@ -42,18 +43,18 @@ Dianewillis::Application.routes.draw do
 
   Mercury::Engine.routes
 
-  root :to => 'page#show',   :via => [:get], :key => 'root'
-  match "" => 'page#update', :via => [:put], :key => 'root'
-  get "login" => "sessions#new", :as => "login"
-  get "logout" => "sessions#destroy", :as => "logout"
+  root to: 'page#show',   via: [:get], key: 'root'
+  match '' => 'page#update', :via => [:put], :key => 'root'
+  get 'login' => 'sessions#new', :as => 'login'
+  get 'logout' => 'sessions#destroy', :as => 'logout'
 
   resources :sessions
 
-  resources :page, :only => [:show]
+  resources :page, only: [:show]
 
   controller :page do
     constraints PageKeyConstraint.new do
-      get '/:key',  :to => :show, :as => :page, :key => /.*/
+      get '/:key',  to: :show, as: :page, key: /.*/
     end
   end
 end

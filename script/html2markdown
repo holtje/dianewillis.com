@@ -8,23 +8,21 @@ doc = File.open(ARGV[0], 'r') do |fp|
   Nokogiri::HTML(fp.read)
 end
 
-
-
-body = doc.xpath("/html/body")
-allowed = ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'tt', 'pre', 'cite', 'em', 'strong', 'i', 'a', 'b', 'br']
+body = doc.xpath('/html/body')
+allowed = %w(p h1 h2 h3 h4 h5 tt pre cite em strong i a b br)
 body.xpath('/*//*').each do |el|
   el.name = el.name.downcase
   unless allowed.include? el.name
     el.children.each { |x| x.parent = el.parent }
     el.unlink
   end
-  ["class", "style", "clear"].each do |a|
+  %w(class style clear).each do |a|
     el.delete(a) if el.key?(a)
   end
 end
 body_str = body.xpath('/*//*').to_s
-puts Kramdown::Document.new(body_str, :input => 'html').
+puts Kramdown::Document.new(body_str, input: 'html').
   to_kramdown.
   gsub(/\\\"/, '"').
   gsub(/\\\'/, "'").
-  gsub(/\\\#/, "#")
+  gsub(/\\\#/, '#')

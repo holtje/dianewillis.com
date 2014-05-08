@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   def ensure_domain
     return unless Rails.env.production?
     if request.env['HTTP_HOST'] != APP_DOMAIN
-      redirect_to "http://#{APP_DOMAIN}#{request.path}", :status => :moved_permanently
+      redirect_to "http://#{APP_DOMAIN}#{request.path}", status: :moved_permanently
     end
   end
 
@@ -20,8 +20,6 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def require_login
-    unless current_user
-      redirect_to login_url, :notice => "Please login first"
-    end
+    redirect_to login_url, notice: 'Please login first' unless current_user
   end
 end

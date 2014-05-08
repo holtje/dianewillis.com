@@ -11,33 +11,33 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 6) do
+ActiveRecord::Schema.define(version: 6) do
 
-  create_table "images", :force => true do |t|
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table 'images', force: true do |t|
+    t.string 'image_file_name'
+    t.string 'image_content_type'
+    t.integer 'image_file_size'
+    t.datetime 'image_updated_at'
+    t.datetime 'created_at'
+    t.datetime 'updated_at'
   end
 
-  create_table "pages", :force => true do |t|
-    t.string   "title",      :null => false
-    t.text     "body",       :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "key",        :null => false
+  create_table 'pages', force: true do |t|
+    t.string 'title',      null: false
+    t.text 'body',       null: false
+    t.datetime 'created_at'
+    t.datetime 'updated_at'
+    t.string 'key',        null: false
   end
 
-  add_index "pages", ["key"], :name => "index_pages_on_key"
-  add_index "pages", ["title"], :name => "index_pages_on_name", :unique => true
+  add_index 'pages', ['key'], name: 'index_pages_on_key'
+  add_index 'pages', ['title'], name: 'index_pages_on_name', unique: true
 
-  create_table "users", :force => true do |t|
-    t.string   "name"
-    t.string   "password_digest"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table 'users', force: true do |t|
+    t.string 'name'
+    t.string 'password_digest'
+    t.datetime 'created_at'
+    t.datetime 'updated_at'
   end
 
 end

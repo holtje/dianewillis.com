@@ -62,10 +62,3 @@ describe Page do
     it_should_behave_like 'smart column', :body
   end
 end
-
-# ~> LoadError
-# ~> cannot load such file -- spec_helper
-# ~>
-# ~> /usr/local/var/rbenv/versions/2.0.0-p353/lib/ruby/site_ruby/2.0.0/rubygems/core_ext/kernel_require.rb:55:in `require'
-# ~> /usr/local/var/rbenv/versions/2.0.0-p353/lib/ruby/site_ruby/2.0.0/rubygems/core_ext/kernel_require.rb:55:in `require'
-# ~> /var/folders/cp/wqqypgsn4_32css3fj_7s_l80000gn/T/seeing_is_believing_temp_dir20140131-64338-1lurmik/program.rb:2:in `<main>'
