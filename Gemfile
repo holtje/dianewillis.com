@@ -2,13 +2,13 @@
 source 'https://rubygems.org'
 ruby File.read('.ruby-version').strip
 
-gem 'rails',          '~> 3.2.17'
+gem 'rails',          '~> 3.2.18'
 gem 'nokogiri',       '~> 1.6'
 gem 'pg'
 gem 'jquery-rails'
 gem 'haml-rails'
-gem 'bcrypt-ruby',    '~> 3.0.0'
-gem 'mercury-rails',  '~> 0.9.0'
+gem 'bcrypt-ruby',    '~> 3.0'
+gem 'mercury-rails',  '~> 0.9'
 gem 'rails_12factor', group: :production
 
 gem 'redcarpet',      '~> 2.0'
@@ -26,6 +26,7 @@ group :test, :development do
   gem 'factory_girl_rails'
   gem 'database_cleaner'
   gem 'capybara'
+  gem 'rubocop'
 
   gem 'sqlite3'
 
