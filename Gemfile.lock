@@ -293,6 +293,7 @@ DEPENDENCIES
   rails_12factor
   rb-fsevent
   redcarpet (~> 2.0)
+  rspec (~> 2.14)
   rspec-rails
   rubocop
   sass-rails

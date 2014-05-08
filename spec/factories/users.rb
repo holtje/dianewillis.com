@@ -9,10 +9,9 @@
 #  updated_at      :datetime         not null
 #
 
-class User < ActiveRecord::Base
-  attr_accessible :name, :password, :password_confirmation
-  has_secure_password
-
-  validates :name, presence: true, uniqueness: true
-  validates :password, presence: true, on: :create
+FactoryGirl.define do
+  factory :user do
+    sequence(:name) { |n| "joecool#{n}" }
+    password 'pa55w0rd'
+  end
 end

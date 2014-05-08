@@ -9,10 +9,15 @@
 #  updated_at      :datetime         not null
 #
 
-class User < ActiveRecord::Base
-  attr_accessible :name, :password, :password_confirmation
-  has_secure_password
+require 'spec_helper'
 
-  validates :name, presence: true, uniqueness: true
-  validates :password, presence: true, on: :create
+describe User do
+  subject(:user) { FactoryGirl.create :user }
+
+  describe 'name' do
+    it 'must be unique' do
+      dup = FactoryGirl.build :user, name: user.name
+      expect(dup).to_not be_valid
+    end
+  end
 end

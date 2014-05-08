@@ -23,6 +23,7 @@ group :assets do
 end
 
 group :test, :development do
+  gem 'rspec', '~> 2.14'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
