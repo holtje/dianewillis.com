@@ -6,8 +6,8 @@
 #  id         :integer          not null, primary key
 #  title      :string(255)      not null
 #  body       :text             not null
-#  created_at :datetime
-#  updated_at :datetime
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #  key        :string(255)      not null
 #
 # Indexes

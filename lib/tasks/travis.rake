@@ -5,6 +5,5 @@ task :travis do
   Rake::Task['db:drop'].invoke
   Rake::Task['db:create'].invoke
   Rake::Task['db:migrate'].execute
-  Rake::Task['spec'].invoke
   Rake::Task['test'].invoke
 end

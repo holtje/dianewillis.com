@@ -16,7 +16,7 @@ namespace :test do
 
   desc 'Run RuboCop on the lib directory'
   Rubocop::RakeTask.new(:rubocop) do |task|
-    task.options.concat %w( --rails --display-cop-names )
+    task.options.concat %w( --rails --display-cop-names --force-exclusion )
     task.patterns = %w(
       Gemfile
       Guardfile
