@@ -2,7 +2,7 @@
 source 'https://rubygems.org'
 ruby File.read('.ruby-version').strip
 
-gem 'rails',          '~> 3.2.18'
+gem 'rails',          '~> 3.2'
 gem 'nokogiri',       '~> 1.6'
 gem 'pg'
 gem 'jquery-rails'
@@ -23,7 +23,7 @@ group :assets do
 end
 
 group :test, :development do
-  gem 'rspec', '~> 2.14'
+  gem 'rspec', '~> 2.14.1'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
