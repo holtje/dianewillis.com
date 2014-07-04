@@ -19,7 +19,13 @@ namespace :test do
     task.patterns = %w(
       Gemfile
       Guardfile
-      **/*.rb
+      app/**/*.rb
+      bin/**/*.rb
+      config/**/*.rb
+      db/**/*.rb
+      lib/**/*.rb
+      spec/**/*.rb
+      test/**/*.rb
     )
   end
 end
