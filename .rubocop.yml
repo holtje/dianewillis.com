@@ -1,9 +1,18 @@
 AllCops:
+  Include:
+    - '**/Gemfile'
+    - '**/Rakefile'
+    - '**/Guardfile'
   Exclude:
     - bin/*
     - script/*
     - db/migrate/*.rb
     - db/schema.rb
+  RunRailsCops: true
+
+# Remove when upgrading to Rails 4.x
+Rails/ActionFilter:
+  Enabled: false
 
 LineLength:
   Max: 120
@@ -19,7 +28,3 @@ FileName:
     - Guardfile
     - Gemfile
     - Gemfile.lock
-
-# This is a rails 4ism
-ActionFilter:
-  Enabled: false

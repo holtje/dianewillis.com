@@ -43,8 +43,7 @@ group :red_green_refactor, halt_on_fail: true do
   end
 
   guard(
-    :rubocop,
-    cli: '--rails --display-cop-names --config .rubocop.yml'
+    :rubocop
   ) do
     watch(/.+\.rb$/) { Dir['**/*.rb'] }
     watch(%r{(?:.+/)?\.rubocop\.yml$}) { |m| File.dirname(m[0]) }

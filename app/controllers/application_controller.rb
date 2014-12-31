@@ -9,9 +9,9 @@ class ApplicationController < ActionController::Base
 
   def ensure_domain
     return unless Rails.env.production?
-    if request.env['HTTP_HOST'] != APP_DOMAIN
-      redirect_to "http://#{APP_DOMAIN}#{request.path}", status: :moved_permanently
-    end
+    return if request.env['HTTP_HOST'] == APP_DOMAIN
+
+    redirect_to "http://#{APP_DOMAIN}#{request.path}", status: :moved_permanently
   end
 
   def current_user
