@@ -9,12 +9,6 @@ group :red_green_refactor, halt_on_fail: true do
   end
 
   guard(
-    :migrate
-  ) do
-    watch(%r{^db/migrate/(\d+).+\.rb})
-  end
-
-  guard(
     :rspec,
     cmd: 'bin/rspec',
     failed_mode: :keep,

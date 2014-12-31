@@ -47,7 +47,6 @@ group :development do
 
   gem 'guard-bundler'
   gem 'guard-rspec'
-  gem 'guard-migrate'
   gem 'guard-rubocop'
   gem 'guard-shell'
 
