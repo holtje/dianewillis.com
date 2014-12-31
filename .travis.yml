@@ -1,6 +1,6 @@
 language: ruby
 env: DB=postgres
-rvm: 2.0.0
+rvm: 2.1.5
 script: "bundle exec rake travis"
 before_script:
   - "cp config/database.travisci.yml config/database.yml"
