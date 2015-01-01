@@ -14,7 +14,7 @@ namespace :test do
   desc 'Runs rubocop on the source'
 
   desc 'Run RuboCop on the lib directory'
-  Rubocop::RakeTask.new(:rubocop) do |task|
+  RuboCop::RakeTask.new(:rubocop) do |task|
     task.options.concat %w( --rails --display-cop-names --force-exclusion )
     task.patterns = %w(
       Gemfile
