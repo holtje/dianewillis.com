@@ -3,7 +3,7 @@ require 'rack/static'
 use(
   Rack::Static,
   root: 'site',
-  urls: %w( /assets ),
+  urls: %w( /assets /a ),
   index: 'index.html',
   header_rules: [[:all, { 'Cache-Control' => 'public, max-age=1' }]]
 )
