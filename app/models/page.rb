@@ -19,7 +19,7 @@ class Page < ActiveRecord::Base
   attr_accessible :title, :body, :key
 
   validates :title, length: { minimum: 0, maximum: 255 }, presence: true
-  validates :key, format: { with: /^[a-z0-9_-]+$/i }, presence: true, uniqueness: true
+  validates :key, format: { with: /\A[a-z0-9_-]+\Z/i }, presence: true, uniqueness: true
   validates :body, presence: true
 
   def body
