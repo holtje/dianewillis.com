@@ -32,6 +32,7 @@ group :test, :development do
   gem 'factory_girl_rails'
   gem 'database_cleaner'
   gem 'capybara'
+  gem 'test-unit'
 
   gem 'sqlite3'
 
