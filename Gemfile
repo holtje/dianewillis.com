@@ -9,11 +9,14 @@ gem 'jquery-rails'
 gem 'haml-rails'
 gem 'bcrypt-ruby',    '~> 3.0.1'
 gem 'mercury-rails',  '~> 0.9'
-gem 'rails_12factor', group: :production
 
 gem 'redcarpet',      '~> 2.0'
-gem 'unicorn'
 gem 'rubocop'
+
+group :production do
+  gem 'unicorn'
+  gem 'rails_12factor'
+end
 
 group :assets do
   gem 'sass-rails'
