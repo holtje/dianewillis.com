@@ -20,11 +20,8 @@ LineLength:
 Documentation:
   Enabled: false
 
-RegexpLiteral:
-  MaxSlashes: 0
-
 FileName:
   Exclude:
-    - Guardfile
-    - Gemfile
-    - Gemfile.lock
+    - 'G*'
+
+inherit_from: .rubocop_todo.yml
