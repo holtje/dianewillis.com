@@ -1,6 +1,7 @@
 language: ruby
 env: DB=postgres
 sudo: false
+cache: bundler
 script: "bundle exec rake travis"
 bundler_args: "--without 'development production'"
 before_script:
