@@ -10,7 +10,7 @@ gem 'haml-rails'
 gem 'bcrypt-ruby',    '~> 3.0.1'
 gem 'mercury-rails',  '~> 0.9'
 
-gem 'redcarpet',      '~> 2.0'
+gem 'redcarpet',      '~> 2.3'
 gem 'rubocop'
 
 group :production do
