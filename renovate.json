@@ -1,8 +1,0 @@
-{
-    "extends": ["config:base"],
-    "prCreation": "status-success",
-    "automerge": true,
-    "major": {
-        "automerge": false
-    }
-}

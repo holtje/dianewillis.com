@@ -1,0 +1,316 @@
+html {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+a,
+abbr,
+acronym,
+address,
+article,
+aside,
+blockquote,
+body,
+caption,
+code,
+dd,
+del,
+details,
+dfn,
+div,
+dl,
+dt,
+em,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+hgroup,
+iframe,
+img,
+label,
+legend,
+li,
+main,
+menu,
+nav,
+object,
+ol,
+p,
+pre,
+q,
+section,
+span,
+summary,
+table,
+tbody,
+td,
+tfoot,
+th,
+thead,
+tr,
+ul {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+blockquote,
+q {
+  quotes: "" "";
+}
+blockquote:after,
+blockquote:before,
+q:after,
+q:before {
+  content: "";
+}
+caption,
+td,
+th {
+  float: none !important;
+  text-align: left;
+  font-weight: 400;
+  vertical-align: middle;
+  padding: 4px 10px 4px 5px;
+}
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  vertical-align: middle;
+  margin-bottom: 1.4em;
+  width: 100%;
+}
+a img {
+  border: none;
+}
+body {
+  background: #eee;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  color: #333;
+  line-height: 1.5;
+  font-size: 20px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
+  color: #222;
+}
+h1 img,
+h2 img,
+h3 img,
+h4 img,
+h5 img,
+h6 img {
+  margin: 0;
+}
+h1 {
+  font-size: 3em;
+  line-height: 1;
+  margin-bottom: 0.5em;
+}
+h2 {
+  font-size: 2em;
+  margin-bottom: 0.75em;
+}
+h3 {
+  font-size: 1.5em;
+  line-height: 1;
+  margin-bottom: 1em;
+}
+h4 {
+  font-size: 1.2em;
+  line-height: 1.25;
+  margin-bottom: 1.25em;
+}
+h5 {
+  font-size: 1em;
+  font-weight: 700;
+  margin-bottom: 1.5em;
+}
+h6 {
+  font-size: 1em;
+  font-weight: 700;
+}
+p {
+  margin: 0 0 1.5em;
+}
+p .left {
+  float: left;
+  margin: 1.5em 1.5em 1.5em 0;
+  padding: 0;
+}
+p .right {
+  float: right;
+  margin: 1.5em 0 1.5em 1.5em;
+  padding: 0;
+}
+a {
+  text-decoration: underline;
+  color: #06c;
+}
+a:visited {
+  color: #004d99;
+}
+a:focus,
+a:hover {
+  color: #09f;
+}
+a:active {
+  color: #bf00ff;
+}
+blockquote {
+  margin: 1.5em;
+  color: #445;
+  font-style: italic;
+}
+dfn,
+dl dt,
+strong,
+th {
+  font-weight: 700;
+}
+dfn,
+em {
+  font-style: italic;
+}
+sub,
+sup {
+  line-height: 0;
+}
+abbr,
+acronym {
+  border-bottom: 1px dotted #666;
+}
+address {
+  margin: 0 0 1.5em;
+  font-style: italic;
+}
+del {
+  color: #445;
+}
+pre {
+  margin: 1.5em 0;
+  white-space: pre;
+}
+code,
+pre,
+tt {
+  font: 1em/1.5 "andale mono", "lucida console", monospace;
+}
+li ol,
+li ul {
+  margin: 0;
+}
+ol,
+ul {
+  margin: 0 1.5em 1.5em 0;
+  padding-left: 1.5em;
+}
+ul {
+  list-style-type: disc;
+}
+ol {
+  list-style-type: decimal;
+}
+dl {
+  margin: 0 0 1.5em;
+}
+dd {
+  margin-left: 1.5em;
+}
+thead th {
+  background: #c3d9ff;
+}
+.even td,
+.striped tr:nth-child(even) td {
+  background: #e5ecf9;
+}
+tfoot {
+  font-style: italic;
+}
+caption {
+  background: #fff;
+}
+.quiet {
+  color: #666;
+}
+.loud {
+  color: #111;
+}
+#title {
+  margin: 0.6em 0;
+}
+#content {
+  background: #fff;
+  border: 1px solid #ddd;
+  max-width: 40em;
+  padding: 0 1em;
+  margin: 1em auto;
+  box-shadow: 0.5em 0.4em 0.5em rgba(0, 0, 0, 0.2);
+}
+#content p {
+  text-align: justify;
+}
+#content blockquote {
+  padding: 0.3em;
+  border: 1px solid #eee;
+  border-radius: 0.4em;
+  box-sizing: border-box;
+  box-shadow: 0.3em 0.2em 0.3em rgba(0, 0, 0, 0.2);
+}
+#content blockquote p:last-child {
+  margin-bottom: 0;
+}
+#content blockquote cite {
+  text-align: right;
+  color: #71718e;
+}
+#content img {
+  float: right;
+  margin: 0 1em;
+}
+#content img.left {
+  float: left;
+  margin: 0 1em 1em 0;
+}
+#footer {
+  text-align: center;
+  font-size: 88%;
+  color: gray;
+  font-style: italic;
+  margin: 1em;
+}

@@ -1,7 +1,0 @@
-%section#admin
-  = link_to "&times;".html_safe, logout_path, :class => 'logout', :title => "Logout"
-  = current_user.name
-  = link_to "source code", "http://github.com/docwhat/dianewillis"
-  = link_to "analytics", "https://www.google.com/analytics/web/#report/visitors-overview/a4714126w40547060p40326979/"
-  - if controller.is_a? PageController
-    = link_to "edit page", "/editor" + request.path, id: "edit_link"
